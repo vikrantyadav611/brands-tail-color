@@ -148,17 +148,10 @@ export default function Home() {
   }, [newPalettes]);
 
   const onButtonClicked = (id) => {
-    switch (id) {
-      case "github":
-        break;
-      case "removeFav":
-        setCodeList([]);
-        setFavList([]);
-        break;
-      case "favList":
-        break;
-      default:
-        break;
+    if (id==="removeFav") {
+      setCodeList([]);
+      setFavList([]);
+      return; 
     }
   };
 
@@ -219,8 +212,7 @@ export default function Home() {
 
       {/* Header */}
       <Header {...{
-        onButtonClicked, 
-        favList 
+        onButtonClicked
       }
       }/>
 

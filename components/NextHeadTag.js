@@ -12,10 +12,10 @@ export default function NextHeadTag({ queryLength,queriedpaletteslength }) {
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {!queryLength ? (
-          <title>Brand Colors</title>
+          <title>Brands Tail Color</title>
         ) : (
           <title>
-            Brand Colors -{" "}
+            Brands Tail Color -{" "}
             {`${queriedpaletteslength} ${
               queriedpaletteslength === 1 ? "result" : "results"
             }`}
