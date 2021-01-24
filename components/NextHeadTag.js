@@ -7,7 +7,7 @@ export default function NextHeadTag({ queryLength,queriedpaletteslength }) {
       <Head>
         <meta
           name="description"
-          content="Configurable custom animation utilities generator for Tailwind CSS."
+          content="Configuration generator of various brand colors for background, border and text for Tailwind CSS."
         ></meta>
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
