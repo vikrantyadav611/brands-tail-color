@@ -9,7 +9,7 @@ import jsBeautifier from "pretty-js";
 import { CopyToClipboard } from "../utils";
 import Code from "../components/Code";
 import BrandList from "../components/BrandsList";
-import NextHeadTag from "../components/nextHeadTag";
+import NextHeadTag from "../components/NextHeadTag";
 
 export default function Home() {
   const [SVGIndex, setSVGIndex] = useState(null);
