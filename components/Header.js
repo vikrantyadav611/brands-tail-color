@@ -24,7 +24,7 @@ export default function Header({ onButtonClicked}) {
     <React.Fragment>
       <header className="font-mono p-8 h-auto flex flex-col items-center lg:items-start space-y-5 lg:h-40 bg-gradient-to-r from-blue-600 to-lightBlue-400">
         <div>
-          <p className="text-4xl text-white font-semibold">Tail Brands Color</p>
+          <p className="text-4xl text-white font-semibold">Brands Tail Color</p>
         </div>
         <div className="flex flex-col w-full space-y-5 items-center lg:items-start lg:justify-between lg:flex-row lg:space-y-0 ">
             <span className="flex space-x-5">
