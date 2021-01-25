@@ -1,5 +1,6 @@
 import '../styles/globals.css'
-import '../styles/okaidia.css'
+import '../styles/github.css'
+// import 'highlight.js/styles/github.css';
 
 
 function MyApp({ Component, pageProps }) {

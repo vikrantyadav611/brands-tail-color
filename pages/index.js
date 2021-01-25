@@ -4,7 +4,6 @@ import Query from "../components/Query";
 import Pagination from "../components/Pagination";
 import useQuery from "../components/hooks/useQuery";
 import { paletteGenerator } from "../utils";
-import prism from "prismjs";
 import jsBeautifier from "pretty-js";
 import { CopyToClipboard } from "../utils";
 import Code from "../components/Code";
@@ -58,8 +57,11 @@ export default function Home() {
 
   useEffect(() => {
     if (!favList.length) {
+      
+      setCodeList([])
       return;
     }
+
     const newList = favList
       .map((list) => {
         const key = list["name"];
@@ -75,7 +77,9 @@ export default function Home() {
       })
       .join(", \n");
 
+
     setCodeList([newList]);
+    
   }, [favList]);
 
   const handleColor = (e, { brandName, color, colorIndex }) => {
@@ -99,7 +103,6 @@ export default function Home() {
     ]);
 
     const prop = `"${brandName}-${colorIndex + 1}":"${color}",`;
-
     setCodeList((prevState) => [...prevState, prop]);
   };
 
@@ -121,17 +124,11 @@ export default function Home() {
 
   const removeFavPalette = (name) => {
     const removeCurrentFromFav = favList.filter((list) => list["name"] != name);
-    const removeCurrentFromCode = codeList.filter((list) =>
-      list.includes(list["name"])
-    );
-    setCodeList(() => [...removeCurrentFromCode]);
+    
+    setFavList(() => [...removeCurrentFromFav]);
 
-    return setFavList(() => [...removeCurrentFromFav]);
+    return;
   };
-
-  useEffect(() => {
-    prism.highlightAll();
-  });
 
   const ifFavExist = (name) => {
     return favList.some((item) => item["name"] === name);
@@ -158,9 +155,9 @@ export default function Home() {
   useEffect(() => {
     setBeautifyCode(
       jsBeautifier(
-        `// tailwind.config.js \n module.exports = {theme: {extend: {colors: {${
+        `{${
           !codeList.length ? "//colors goes here... \n" : ""
-        } ${codeList} }}}}`
+        } ${codeList} }`
       )
     );
   }, [codeList]);
@@ -201,6 +198,7 @@ export default function Home() {
   }, [copyStatus["status"]]);
 
   const queriedpaletteslength = newPalettes.length;
+  
 
   return (
     <React.Fragment>
