@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Copy from "../components/SVGS/Copy";
 import Tick from "../components/SVGS/Tick";
 
+const regex=/(.*)-\d/;
+
 export default function Code({
   currentPaletteList,
   codeList,
@@ -20,18 +22,19 @@ export default function Code({
         {currentPaletteList.map((palette, i) => (
           <li
             key={`${palette["name"]}${i}`}
-            className={`relative group  py-2 border hover:shadow border-gray-200 cursor-pointer hover:border-gray-400 rounded-sm ${
-              ifFavExist(palette["name"])
-                ? "hover:bg-yellow-100"
-                : "hover:bg-coolGray-100"
-            }`}
+            className={`relative group  py-2 border hover:shadow border-gray-200
+            
+            ${!ifFavExist(palette["name"],true)?"cursor-pointer":"cursor-not-allowed"}              
+            
+            hover:border-gray-400  hover:bg-gray-100 rounded-sm`}          
+
             onClick={() => {
               // check if current onClicked pallette is in fav list or not
               if (ifFavExist(palette["name"])) {
                 removeFavPalette(palette["name"]);
                 return;
               }
-              if (codeList.some((list) => list.includes(palette["name"]))) {
+              if (ifFavExist(palette["name"],true)) {
                 return;
               }
               setFavPallette([palette]);
@@ -44,16 +47,16 @@ export default function Code({
                 <Tick class_Name="h-5 w-5 text-green-500 border-l border-b border-gray-200 group-hover:border-gray-400" />
               </span>
             )}
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-4 p-0.5">
               {/* Brand Name */}
-              <span className="w-auto text-center">{palette["name"]}</span>
+              <span className="w-auto text-center"> <p> {palette["name"]} </p></span>
               {/* Brand Colors (Array) */}
               <span>
-                <ul className="flex md:space-x-1 justify-center p-0.5 flex-wrap">
+                <ul className="flex space-x-1 justify-center p-0.5 flex-wrap">
                   {palette["colors"].map((color, in_) => (
                     <li
                       key={`${color}${in_}`}
-                      className="flex justify-center items-center text-white w-14 h-7 rounded-sm mt-2"
+                      className={`flex justify-center items-center text-white w-14 h-7 rounded-sm mt-2 ${ifFavExist(palette["name"])?"cursor-not-allowed":"cursor-pointer"}`}
                       style={{ background: color }}
                       onClick={(e) => {
                         e.preventDefault();

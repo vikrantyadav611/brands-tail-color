@@ -10,9 +10,11 @@ import Code from "../components/Code";
 import BrandList from "../components/BrandsList";
 import NextHeadTag from "../components/NextHeadTag";
 
+const regex=/(.*)-\d/; //regex to match those keywords/brand-name which hold a numeric digit at last index like algolia-1,algolia-3 etc 
+
 export default function Home() {
   
-  const [palettes, setPalettes] = useState([]); //default color palettes list
+  const [palettes, setPalettes] = useState([]);
 
   const [beautifyCode, setBeautifyCode] = useState("");
 
@@ -127,13 +129,21 @@ export default function Home() {
     return;
   };
 
-  const ifFavExist = (name) => {
+  const ifFavExist = (name,checkIndividualColor=false) => {
     if (!favList.length) {
       return;
     }
-    // console.log(favList);
-    return favList.some((item) => item["name"] === name);
+    if (!checkIndividualColor) {
+
+      return favList.some((item) => item["name"] === name);
+      
+    }
+
+      const filterDigitBasedFavList=favList.filter(item=>item["name"].match(regex))
+
+      return filterDigitBasedFavList.some((item) =>regex.exec(item["name"])[1] === name);
   }
+
 
   useEffect(() => {
     if (!queryRef.current) {
@@ -199,8 +209,6 @@ export default function Home() {
   }, [copyStatus["status"]]);
 
   const queriedpaletteslength = newPalettes.length;
-  
-  console.log(favList);
 
   return (
     <React.Fragment>
