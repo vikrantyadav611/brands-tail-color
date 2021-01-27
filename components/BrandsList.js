@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import Copy from "../components/SVGS/Copy";
 import Tick from "../components/SVGS/Tick";
 
-const regex=/(.*)-\d/;
-
 export default function Code({
   currentPaletteList,
-  codeList,
   ifFavExist,
   removeFavPalette,
   setFavPallette,

@@ -238,7 +238,6 @@ export default function Home() {
           <BrandList
             {...{
               currentPaletteList,
-              codeList,
               ifFavExist,
               removeFavPalette,
               setFavPallette,
