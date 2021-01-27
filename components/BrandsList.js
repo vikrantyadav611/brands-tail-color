@@ -15,7 +15,7 @@ export default function Code({
 
   return (
     <React.Fragment>
-      <ul className="font-medium p-4 lg:pt-8 lg:pb-8 lg:pl-8 lg:pr-0 lg:w-4/6 text-coolGray-700 grid gap-2 grid-cols-4">
+      <ul className="font-medium p-4 lg:pt-7 lg:pb-7 lg:pl-7 lg:pr-0 lg:w-4/6 text-coolGray-700 grid gap-1 sm:gap-2 grid-cols-4">
         {currentPaletteList.map((palette, i) => (
           <li
             key={`${palette["name"]}${i}`}
@@ -46,10 +46,10 @@ export default function Code({
             )}
             <div className="flex flex-col space-y-4 p-0.5">
               {/* Brand Name */}
-              <span className="w-auto text-center"> <p> {palette["name"]} </p></span>
+              <div className="text-center"> <p className="lineclamp"> {palette["name"]} </p></div>
               {/* Brand Colors (Array) */}
               <span>
-                <ul className="flex space-x-1 justify-center p-0.5 flex-wrap">
+                <ul className="flex md:space-x-1 justify-center p-0.5 flex-wrap">
                   {palette["colors"].map((color, in_) => (
                     <li
                       key={`${color}${in_}`}

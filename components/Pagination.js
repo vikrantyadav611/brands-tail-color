@@ -5,7 +5,7 @@ export default function Pagination({ pageInfo, changeCurrentPage }) {
 
   return (
     <React.Fragment>
-      <ul className="flex space-x-2 w-full justify-center p-2 flex-wrap">
+      <ul className="flex space-x-1 w-full justify-center p-2 flex-wrap">
         {pageNumbers.map((number, i) => (
           <li
             key={`${number}${i}`}

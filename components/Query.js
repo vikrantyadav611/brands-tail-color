@@ -37,12 +37,12 @@ export default function Query({ query, setQuery }) {
 
   return (
     <React.Fragment>
-      <form className="sticky top-0 flex items-center bg-white  px-8 shadow z-50" onSubmit={(e)=>e.preventDefault()}>
+      <form className="sticky top-0 flex items-center bg-white px-4 lg:px-7 shadow z-50" onSubmit={(e)=>e.preventDefault()}>
         <div className="relative w-full h-full">
           <input
             className="h-full w-full py-5 px-10 text-lg placeholder-gray-400 focus:placeholder-gray-300 text-coolGray-600 tracking-tighter focus:outline-none"
             ref={inputRef}
-            placeholder={`Search (Press "/" to focus)`}
+            placeholder={`Search Brands (Press "/" to focus)`}
             type="text"
             value={query}
             onChange={(e) => handleChange(e)}

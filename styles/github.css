@@ -7,6 +7,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs {
     display: block;
     overflow-x: auto;
+    border-radius: 0.125rem;
     padding: 0.5em;
     color: #fff;
     background: #2d3748;

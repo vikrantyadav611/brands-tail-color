@@ -6,7 +6,7 @@ import HighLight from "react-highlight.js";
 export default function Code({ copyStatus, onCopyCode, beautifyCode }) {
   return (
     <React.Fragment>
-      <div className="relative pt-6 p-4 lg:pt-8 lg:pb-8 lg:pr-0 lg:pl-0 overflow-auto lg:w-2/7">
+      <div className="relative pt-6 p-4 lg:pt-7 lg:pb-7 lg:pr-0 lg:pl-0 overflow-auto lg:w-2/7">
         <button
           className="absolute focus:outline-none border border-white text-white transition-colors hover:bg-white hover:text-coolGray-700 rounded-md flex items-center space-x-1 top-0 p-1 right-0 mr-7 mt-9 lg:mr-4 lg:mt-12 cursor-pointer"
           onClick={(e) => onCopyCode(e)}

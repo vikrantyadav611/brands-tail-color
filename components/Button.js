@@ -29,11 +29,12 @@ const Button = ({ children, name, color, onClicked, id_, href }) => {
   return (
     <React.Fragment>
       <a 
+      className="w-full sm:w-auto"
       href={href}
       >
         <button
-          className={` cta py-2.5 px-5 transform hover:-translate-y-0.5 transition-all duration-150 shadow 
-        outline-none hover:shadow-lg flex space-x-2 items-center bg-opacity-80 focus:ring-white focus:ring-opacity-40
+          className={` cta flex justify-center py-2.5 px-5 w-full transform hover:-translate-y-0.5 transition-all duration-150 shadow 
+        outline-none hover:shadow-lg  space-x-2 items-center bg-opacity-80 focus:ring-white focus:ring-opacity-40
         ${color} focus:ring
         focus:outline-none  rounded-lg text-white  hover:bg-opacity-90`}
           onClick={() => {
