@@ -1,27 +1,27 @@
-import React from "react";
-import Copy from "../components/SVGS/Copy"
+import React, { useState } from "react";
+import Copy from "../components/SVGS/Copy";
 import Tick from "../components/SVGS/Tick";
 
 export default function Code({
-    currentPaletteList,
-    codeList,
-    ifFavExist,
-    removeFavPalette,
-    setFavPallette,
-    setSVGIndex,
-    handleColor,
-    SVGIndex,
-    colorIndex,
-    setColorIndex
+  currentPaletteList,
+  codeList,
+  ifFavExist,
+  removeFavPalette,
+  setFavPallette,
+  handleColor
 }) {
+  const [SVGIndex, setSVGIndex] = useState(null);
+
+  const [colorIndex, setColorIndex] = useState(null);
+
   return (
     <React.Fragment>
       <ul className="font-medium p-4 lg:pt-8 lg:pb-8 lg:pl-8 lg:pr-0 lg:w-4/6 text-coolGray-700 grid gap-2 grid-cols-4">
         {currentPaletteList.map((palette, i) => (
           <li
             key={`${palette["name"]}${i}`}
-            className={`relative group py-2 border transition-colors duration-300 hover:shadow border-gray-200 cursor-pointer hover:border-gray-400 rounded-sm ${
-              codeList.some((list) => list.includes(palette["name"]))
+            className={`relative group  py-2 border hover:shadow border-gray-200 cursor-pointer hover:border-gray-400 rounded-sm ${
+              ifFavExist(palette["name"])
                 ? "hover:bg-yellow-100"
                 : "hover:bg-coolGray-100"
             }`}
@@ -57,7 +57,11 @@ export default function Code({
                       style={{ background: color }}
                       onClick={(e) => {
                         e.preventDefault();
-                        if (ifFavExist(`${palette["name"]}-${in_ + 1}`)) {
+                        if (
+                          ifFavExist(
+                            `${palette["name"]}-${in_ + 1}`
+                          )
+                        ) {
                           removeFavPalette(`${palette["name"]}-${in_ + 1}`);
                           return;
                         }
@@ -70,12 +74,14 @@ export default function Code({
                       onMouseEnter={() => setColorIndex(in_)}
                       onMouseLeave={() => setColorIndex(null)}
                     >
-                      {ifFavExist(`${palette["name"]}-${in_ + 1}`) && (
-                        <Tick class_Name="h-5 w-5 text-white" />
-                      )}
+                      {ifFavExist(
+                        `${palette["name"]}-${in_ + 1}`
+                      ) && <Tick class_Name="h-5 w-5 text-white" />}
                       {SVGIndex === i &&
                         colorIndex === in_ &&
-                        !ifFavExist(`${palette["name"]}-${in_ + 1}`) &&
+                        !ifFavExist(
+                          `${palette["name"]}-${in_ + 1}`
+                        ) &&
                         !ifFavExist(palette["name"]) && <Copy />}
                     </li>
                   ))}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useCallback } from "react";
 import Header from "../components/Header";
 import Query from "../components/Query";
 import Pagination from "../components/Pagination";
@@ -11,8 +11,7 @@ import BrandList from "../components/BrandsList";
 import NextHeadTag from "../components/NextHeadTag";
 
 export default function Home() {
-  const [SVGIndex, setSVGIndex] = useState(null);
-  const [colorIndex, setColorIndex] = useState(null);
+  
   const [palettes, setPalettes] = useState([]); //default color palettes list
 
   const [beautifyCode, setBeautifyCode] = useState("");
@@ -102,8 +101,6 @@ export default function Home() {
       },
     ]);
 
-    const prop = `"${brandName}-${colorIndex + 1}":"${color}",`;
-    setCodeList((prevState) => [...prevState, prop]);
   };
 
   const changeCurrentPage = (index) => {
@@ -131,8 +128,12 @@ export default function Home() {
   };
 
   const ifFavExist = (name) => {
+    if (!favList.length) {
+      return;
+    }
+    // console.log(favList);
     return favList.some((item) => item["name"] === name);
-  };
+  }
 
   useEffect(() => {
     if (!queryRef.current) {
@@ -199,6 +200,7 @@ export default function Home() {
 
   const queriedpaletteslength = newPalettes.length;
   
+  console.log(favList);
 
   return (
     <React.Fragment>
@@ -232,11 +234,7 @@ export default function Home() {
               ifFavExist,
               removeFavPalette,
               setFavPallette,
-              handleColor,
-              setSVGIndex,
-              SVGIndex,
-              colorIndex,
-              setColorIndex,
+              handleColor
             }}
           />
           {/* Code */}
