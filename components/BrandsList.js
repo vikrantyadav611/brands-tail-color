@@ -15,7 +15,7 @@ export default function Code({
 
   return (
     <React.Fragment>
-      <ul className="font-medium p-4 lg:pt-7 lg:pb-7 lg:pl-7 lg:pr-0 lg:w-4/6 text-coolGray-700 grid gap-1 sm:gap-2 grid-cols-4">
+      <ul className="font-medium p-4 lg:pt-7 lg:pb-7 lg:pl-7 lg:pr-0 lg:w-4/6 text-coolGray-800 grid gap-1 sm:gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
         {currentPaletteList.map((palette, i) => (
           <li
             key={`${palette["name"]}${i}`}
@@ -48,12 +48,11 @@ export default function Code({
               {/* Brand Name */}
               <div className="text-center"> <p className="lineclamp"> {palette["name"]} </p></div>
               {/* Brand Colors (Array) */}
-              <span>
-                <ul className="flex md:space-x-1 justify-center p-0.5 flex-wrap">
+                <ul className="flex space-x-1 justify-center flex-wrap">
                   {palette["colors"].map((color, in_) => (
                     <li
                       key={`${color}${in_}`}
-                      className={`flex justify-center items-center text-white w-14 h-7 rounded-sm mt-2 ${ifFavExist(palette["name"])?"cursor-not-allowed":"cursor-pointer"}`}
+                      className={`flex justify-center items-center text-white w-14 h-7 ${in_===0?"ml-1":""} rounded-sm mt-2 ${ifFavExist(palette["name"])?"cursor-not-allowed":"cursor-pointer"}`}
                       style={{ background: color }}
                       onClick={(e) => {
                         e.preventDefault();
@@ -86,7 +85,6 @@ export default function Code({
                     </li>
                   ))}
                 </ul>
-              </span>
             </div>
           </li>
         ))}
