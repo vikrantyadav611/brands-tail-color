@@ -12,11 +12,18 @@ export default function Code({
   const [SVGIndex, setSVGIndex] = useState(null);
 
   const [colorIndex, setColorIndex] = useState(null);
-
+  
   return (
     <React.Fragment>
+     { !currentPaletteList.length 
+      ?
+        <span className="p-4 lg:pt-7 lg:pb-7 lg:pl-7 lg:pr-0 lg:w-4/6 h-auto flex items-center justify-center">
+          <p>Loading...</p>
+        </span>
+      :
       <ul className="font-medium p-4 lg:pt-7 lg:pb-7 lg:pl-7 lg:pr-0 lg:w-4/6 text-coolGray-800 grid gap-1 sm:gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-        {currentPaletteList.map((palette, i) => (
+        {
+        currentPaletteList.map((palette, i) => (
           <li
             key={`${palette["name"]}${i}`}
             className={`relative group  py-2 border hover:shadow border-gray-200
@@ -87,8 +94,10 @@ export default function Code({
                 </ul>
             </div>
           </li>
-        ))}
+        ))
+        }
       </ul>
+    }
     </React.Fragment>
   );
 }

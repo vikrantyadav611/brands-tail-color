@@ -253,7 +253,6 @@ export default function Home() {
           changeCurrentPage={changeCurrentPage}
         />
       </main>
-      <footer></footer>
     </React.Fragment>
   );
 }
